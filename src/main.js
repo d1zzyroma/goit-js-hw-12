@@ -14,17 +14,19 @@ const refs = {
     loader: document.querySelector(".loader"),
     parent: document.querySelector(".parent"),
     buttonLoadMore: document.querySelector(".btn-more")
+    
 };
 
 refs.formEl.addEventListener("submit", handleSubmit);
 
 let currentPage = 1;
 let globalInputValue = "";
+
 function handleSubmit(event) {
     event.preventDefault();
     refs.gallery.innerHTML = "";
     const inputValue = refs.inputFormEl.value.trim();
-    
+    currentPage = 1
     
     globalInputValue = inputValue;
     
@@ -42,6 +44,7 @@ function handleSubmit(event) {
                                                 });
 
                                                 galleryImages.refresh();
+                                                
                                             } else {
                                                 iziToast.show({
                                                     title: 'Error',
@@ -52,17 +55,19 @@ function handleSubmit(event) {
                                                 });
                                             }
 
-                                            currentPage += 1;
-
+                                        
                                             if(refs.gallery.children.length > 0){
                                                 refs.buttonLoadMore.style.display = "inline"
                                             }
+                                            
                                         })
 
                                         .catch(error => console.log(error))
                                         .finally(() => {
                                             hideLoader();
+                                            
                                         });
+                                        
 }
 
 
@@ -80,11 +85,12 @@ function hideLoader() {
 refs.buttonLoadMore.addEventListener("click", handleLoadMore);
 
 function handleLoadMore(){
-
+    currentPage += 1;
     showLoader();
     getImages(globalInputValue, currentPage)
 
                                             .then(response => {
+
                                                 if (response.data.hits.length > 0) {
                                                     const markup = createMarkup(response.data.hits);
                                                     refs.gallery.insertAdjacentHTML("beforeend", markup);
@@ -98,6 +104,7 @@ function handleLoadMore(){
                                                     galleryImages.refresh();
                                                 } 
 
+                                                
                                                 if(response.data.totalHits === refs.gallery.children.length){
                                                     iziToast.show({
                                                         title: 'Error',
@@ -107,13 +114,20 @@ function handleLoadMore(){
                                                         icon: "fas fa-exclamation-circle"
                                                     });
                                                     refs.buttonLoadMore.style.display = "none"
-
                                                 }
+                                                const galleryItem = document.querySelector(".gallery-item");
+                                                galleryItem.getBoundingClientRect()
+                                                window.scrollBy({
+                                                    top: 340,
+                                                    left: 0,
+                                                    behavior: "smooth",
+                                                  });
                                             })
 
                                             .catch(error => console.log(error))
                                             .finally(() => {
                                                 hideLoader();
                                             });
+
 }
 
