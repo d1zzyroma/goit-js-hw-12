@@ -9,10 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Vanilla App Template</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
   </head>
   <body>
-    
+    <script>
+      
+      var global = global || window;
+    </script>
     <section>
       <form class="form">
         <input type="text" name="form-input" class="form-input" placeholder="Search images...">
@@ -24,7 +27,11 @@
       <ul class="gallery">
 
       </ul>
+      <div class="parent">
+        <div class="loader"></div>
+      </div>
+      <div class="btn-wrapper"><button type="submit" name="load-more" class="btn-more" >Load more</button></div>
     </section>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>

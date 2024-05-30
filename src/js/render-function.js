@@ -1,5 +1,5 @@
 export function createMarkup(hits){
-    return hits.map(hit => 
+      return hits.map(hit => 
          `
          <li class="gallery-item">
          <a href="${hit.largeImageURL}" class="gallery-link">
