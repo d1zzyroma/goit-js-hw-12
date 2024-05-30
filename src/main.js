@@ -1,7 +1,5 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-
-
 import { getImages } from "./js/pixabay-api";
 import { createMarkup } from "./js/render-function";
 
@@ -17,6 +15,7 @@ const refs = {
     
 };
 
+
 refs.formEl.addEventListener("submit", handleSubmit);
 
 let currentPage = 1;
@@ -26,7 +25,7 @@ function handleSubmit(event) {
     event.preventDefault();
     refs.gallery.innerHTML = "";
     const inputValue = refs.inputFormEl.value.trim();
-    currentPage = 1
+    currentPage = 1;
     
     globalInputValue = inputValue;
     
@@ -58,7 +57,7 @@ function handleSubmit(event) {
                                         
                                             if(refs.gallery.children.length > 0){
                                                 refs.buttonLoadMore.style.display = "inline"
-                                            }
+                                            };
                                             
                                         })
 
@@ -113,10 +112,10 @@ function handleLoadMore(){
                                                         color: "rgba(239, 64, 64, 1)",
                                                         icon: "fas fa-exclamation-circle"
                                                     });
-                                                    refs.buttonLoadMore.style.display = "none"
+                                                    refs.buttonLoadMore.style.display = "none";
                                                 }
                                                 const galleryItem = document.querySelector(".gallery-item");
-                                                galleryItem.getBoundingClientRect()
+                                                galleryItem.getBoundingClientRect();
                                                 window.scrollBy({
                                                     top: 340,
                                                     left: 0,
