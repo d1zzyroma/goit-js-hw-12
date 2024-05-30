@@ -35,7 +35,6 @@ function handleSubmit(event) {
                                             if (response.data.hits.length > 0) {
                                                 const markup = createMarkup(response.data.hits);
                                                 refs.gallery.insertAdjacentHTML("beforeend", markup);
-
                                                 let galleryImages = new SimpleLightbox('.gallery a', {
                                                     showCounter: false,
                                                     captionsData: "alt",
