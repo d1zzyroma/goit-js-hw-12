@@ -1,5 +1,8 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
 import { getImages } from "./js/pixabay-api";
 import { createMarkup } from "./js/render-function";
 
@@ -52,9 +55,9 @@ function handleSubmit(event) {
                                                     color: "rgba(239, 64, 64, 1)",
                                                     icon: "fas fa-exclamation-circle"
                                                 });
+                                                refs.buttonLoadMore.style.display = "none";
                                             }
 
-                                        
                                             if(refs.gallery.children.length > 0){
                                                 refs.buttonLoadMore.style.display = "inline"
                                             };
@@ -62,6 +65,7 @@ function handleSubmit(event) {
                                         })
 
                                         .catch(error => console.log(error))
+                                        
                                         .finally(() => {
                                             hideLoader();
                                             
